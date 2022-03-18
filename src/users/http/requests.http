@@ -7,12 +7,12 @@ GET http://localhost:3000/auth
 
 
 ### Create user
-POST http://localhost:3000/auth/signup
+POST http://localhost:3000/auth/signin
 content-type: application/json
 
 {
-  "email": "geeg@nest.com",
-  "password": "geeg"
+  "email": "greaterHights@nest.com",
+  "password": "greaterHights"
 }
 
 ### Update a particular user
