@@ -1,5 +1,5 @@
 ### Get a particular user
-GET http://localhost:3000/auth/2
+GET http://localhost:3000/auth/3
 
 
 ### Get all users
@@ -16,11 +16,11 @@ content-type: application/json
 }
 
 ### Update a particular user
-PATCH http://localhost:3000/auth/2
+PATCH http://localhost:3000/auth/5
 content-type: application/json
 
 {
-  "password": "super",
+  "email": "super@nest.com"
 }
 
 ### Delete a particular user with id
