@@ -1,0 +1,27 @@
+### Get a particular user
+GET http://localhost:3000/auth/2
+
+
+### Get all users
+GET http://localhost:3000/auth
+
+
+### Create user
+POST http://localhost:3000/auth/signup
+content-type: application/json
+
+{
+  "email": "geeg@nest.com",
+  "password": "geeg"
+}
+
+### Update a particular user
+PATCH http://localhost:3000/auth/2
+content-type: application/json
+
+{
+  "password": "super",
+}
+
+### Delete a particular user with id
+DELETE http://localhost:3000/auth/2
