@@ -22,6 +22,10 @@ export class UsersService {
   }
 
   findOneUser(id: number): Promise<User> {
+    if (!id) {
+      throw new NotFoundException('User not found');
+      // return null;
+    }
     return this.userRepo.findOne(id);
   }
 

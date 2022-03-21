@@ -7,7 +7,7 @@ import {
   Param, 
   Delete, 
   NotFoundException, 
-  Session 
+  Session
 } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
@@ -15,6 +15,8 @@ import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { UsersService } from './users.service';
 import { UserDto } from './dtos/user.dto';
 import { AuthService } from './auth.service';
+import { User } from './user.entity';
+import { CurrentUser } from './decorators/current-user.decorator';
 
 @Controller('auth')
 @Serialize(UserDto)
@@ -30,14 +32,28 @@ export class UsersController {
   }
 
   @Post('/signup')
-  createUser(@Body() body: CreateUserDto) {
-    // this.userService.createUser(body.email, body.password);
-    return this.authService.signup(body.email, body.password);
+  async createUser(@Body() body: CreateUserDto, @Session() session: any) {
+    const user = await this.authService.signup(body.email, body.password);
+    session.userId = user.id;
+    return user;
+    // return this.authService.signup(body.email, body.password)
   }
 
   @Post('/signin')
-  signin(@Body() body: CreateUserDto) {
-    return this.authService.signin(body.email, body.password);
+  async signin(@Body() body: CreateUserDto, @Session() session: any) {
+    const user =  await this.authService.signin(body.email, body.password);
+    session.userId = user.id;
+    return user;
+  }
+
+  // @Get('/whoami')
+  // whoami(@Session() session: any, @CurrentUser() user: any) {
+  //   return this.userService.findOneUser(session.userId);
+  // }
+
+  @Get('/whoami')
+  whoami(@CurrentUser() user: User) {
+    return user;
   }
 
   @Get('/:id')
@@ -57,5 +73,11 @@ export class UsersController {
   @Delete('/:id')
   removeUser(@Param('id') id: string) {
     return this.userService.removeUser(parseInt(id));
+  }
+
+  @Post('/signout')
+  signout(@Session() session: any) {
+    session.userId = null;
+    return { message: 'You are signed out!' };
   }
 }

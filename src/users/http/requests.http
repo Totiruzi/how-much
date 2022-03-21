@@ -7,13 +7,25 @@ GET http://localhost:3000/auth
 
 
 ### Create user
+POST http://localhost:3000/auth/signup
+content-type: application/json
+
+{
+  "email": "dan@next.com",
+  "password": "dan12345"
+}
+
+### Sign in existing user
 POST http://localhost:3000/auth/signin
 content-type: application/json
 
 {
-  "email": "greaterHights@nest.com",
-  "password": "greaterHights"
+  "email": "dan@next.com",
+  "password": "dan12345"
 }
+
+### Get currently signed in user
+GET http://localhost:3000/auth/whoami
 
 ### Update a particular user
 PATCH http://localhost:3000/auth/5
@@ -25,3 +37,6 @@ content-type: application/json
 
 ### Delete a particular user with id
 DELETE http://localhost:3000/auth/2
+
+### Sign out user
+POST http://localhost:3000/auth/signout
