@@ -32,7 +32,7 @@ PATCH http://localhost:3000/auth/5
 content-type: application/json
 
 {
-  "email": "super@nest.com"
+  "email": "dan1@next.com"
 }
 
 ### Delete a particular user with id
