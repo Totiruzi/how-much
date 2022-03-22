@@ -2,7 +2,6 @@ import { User } from './user.entity';
 import { Test } from '@nestjs/testing';
 import { AuthService } from './auth.service';
 import { UsersService } from './users.service';
-import { sampleTime } from 'rxjs';
 
 describe('AuthService', () => {
   let authService: AuthService;
@@ -52,12 +51,21 @@ describe('AuthService', () => {
     }    
   });
 
-  it('throw an error if user with email is in usr', async () => {
-    fakeUserService.findUserByEmail = () => Promise.resolve({email: 'a@b.com', password: 'abc'} as User);
+  it('throw an error if user with email is in use', async () => {
+    await authService.signup('z@zoro.com', 'bobby');
     try {
       await authService.signup('z@zoro.com', 'zoro');
     } catch (error) {
       expect(error.message).toEqual('User already exists');
+    }
+  })
+
+  it('throw an error if invalid password', async () => {
+    await authService.signup('pace@pacecom', 'pace');
+    try {
+      await authService.signin('pace@pacecom', 'pae');
+    } catch (error) {
+      expect(error.message).toEqual('Invalid password or email');
     }
   })
 
