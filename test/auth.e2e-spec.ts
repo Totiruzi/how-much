@@ -16,7 +16,7 @@ describe('Authentication System', () => {
   });
 
   it('handles a signup request', () => {
-    const email = 'merciful@lord.com' 
+    const email = 'merciful7@lord.com' 
     return request(app.getHttpServer())
       .post('/auth/signup')
       .send({email, password: 'come'})
@@ -27,4 +27,20 @@ describe('Authentication System', () => {
         expect(email).toBe(email);
       })
   });
+
+  it('signup as a new user and gets the curently logged in user', async () => {
+    const email = 'greacious@lord.com'
+    const response = await request(app.getHttpServer())
+      .post('/auth/signup')
+      .send({email, password: 'graceful '})
+
+    const cookie = response.get('Set-Cookie');
+
+    const { body } = await request(app.getHttpServer())
+      .get('/auth/whoami')
+      .set('Cookie', cookie)
+      .expect(200)
+
+    expect(body.email).toBe(email);
+  })
 });
