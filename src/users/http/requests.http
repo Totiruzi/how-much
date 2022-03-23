@@ -11,8 +11,8 @@ POST http://localhost:3000/auth/signup
 content-type: application/json
 
 {
-  "email": "dan@next.com",
-  "password": "dan12345"
+  "email": "dan7@next.com",
+  "password": "dan7"
 }
 
 ### Sign in existing user
