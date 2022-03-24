@@ -3,15 +3,15 @@ POST http://localhost:3000/reports
 content-type: application/json
 
 {
-  "make": "Volkswagen",
+  "make": "Porch",
 
-  "model": "Polo",
+  "model": "Pantara",
   
-  "madeYear": 2012,
+  "madeYear": 2025,
 
-  "soldPrice": 47000,
+  "soldPrice": 50000,
 
-  "mileage": 112000,
+  "mileage": 0,
 
   "lat": "40.7128",
 
