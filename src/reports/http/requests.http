@@ -3,17 +3,25 @@ POST http://localhost:3000/reports
 content-type: application/json
 
 {
-  "make": "Porch",
+  "make": "Bently",
 
-  "model": "Pantara",
+  "model": "Benovolence",
   
-  "madeYear": 2025,
+  "madeYear": 2026,
 
-  "soldPrice": 50000,
+  "soldPrice": 500000,
 
   "mileage": 0,
 
   "lat": "40.7128",
 
   "lng": "-74.0060"
+}
+
+### Approves an existing report
+PATCH http://localhost:3000/reports/6
+content-type: application/json
+
+{
+  "approved": true
 }
