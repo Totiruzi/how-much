@@ -17,6 +17,7 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
-    "allowJs": true
+    // If using ormconfig.js file to configure TypeORM, set "allowJs": true
+    // "allowJs": true
   }
 }
