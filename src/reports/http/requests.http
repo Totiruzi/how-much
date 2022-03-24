@@ -1,0 +1,19 @@
+### Creates a new report
+POST http://localhost:3000/reports
+content-type: application/json
+
+{
+  "make": "Volkswagen",
+
+  "model": "Polo",
+  
+  "madeYear": 2012,
+
+  "soldPrice": 47000,
+
+  "mileage": 112000,
+
+  "lat": "40.7128",
+
+  "lng": "-74.0060"
+}
