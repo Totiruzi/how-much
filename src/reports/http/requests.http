@@ -1,21 +1,25 @@
+### Get estimate 
+GET http://localhost:3000/reports?make=Lambourghini&model=Veyron&madeYear=2027&mileage=30&lat=40&lng=45
+
+
 ### Creates a new report
 POST http://localhost:3000/reports
 content-type: application/json
 
 {
-  "make": "Bently",
+  "make": "Lambourghini",
 
-  "model": "Benovolence",
+  "model": "Veyron",
   
-  "madeYear": 2026,
+  "madeYear": 2027,
 
-  "soldPrice": 500000,
+  "soldPrice": 80000,
 
-  "mileage": 0,
+  "mileage": 30,
 
-  "lat": "40.7128",
+  "lat": 45,
 
-  "lng": "-74.0060"
+  "lng": 45
 }
 
 ### Approves an existing report
